@@ -90,3 +90,35 @@ CREATE TABLE revenues (
 
 
 ```
+
+
+### Insert data sample
+
+```sql
+INSERT INTO users (email, password)
+VALUES
+  ('demo1@example.com', 'hashed_password_3');
+
+
+INSERT INTO category (category_name, created_at, update_at)
+VALUES
+  ('Electronics', NOW(), NOW()),
+  ('Books', NOW(), NOW()),
+  ('Clothing', NOW(), NOW());
+
+
+
+INSERT INTO products (category_id, created_at, update_at)
+VALUES
+  (1, NOW(), NOW()), -- thuộc Electronics
+  (2, NOW(), NOW()), -- thuộc Books
+  (3, NOW(), NOW()); -- thuộc Clothing
+
+
+INSERT INTO product_detail (product_id, product_name, description, price, stock, image_url, weight, dimensions, status, created_at, update_at)
+VALUES
+  (1, 'Smartphone', 'Latest model', 699.99, 'In Stock', 'https://example.com/image1.jpg', 0.2, '15x7x0.8 cm', true, NOW(), NOW()),
+  (2, 'Novel Book', 'Bestseller 2024', 19.99, 'Available', 'https://example.com/image2.jpg', 0.5, '20x13x2 cm', true, NOW(), NOW()),
+  (3, 'T-Shirt', '100% Cotton', 9.99, 'Limited Stock', 'https://example.com/image3.jpg', 0.3, 'M size', true, NOW(), NOW());
+
+```
