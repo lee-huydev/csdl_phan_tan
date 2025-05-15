@@ -1,4 +1,4 @@
-### Create table at node
+### Create table at node database
 
 ```sql
 CREATE TABLE users (
