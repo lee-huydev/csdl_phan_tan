@@ -2,15 +2,16 @@
 
 ### Create extension FWD
 ```sql
+
 CREATE EXTENSION IF NOT EXISTS postgres_fdw;
 
 DROP SERVER IF EXISTS csdl_phan_tan_node1 CASCADE;
 
 ```
-### Create table foreign
-```sql
--- node 1
 
+### Create Server Foreign
+
+```sql
 CREATE SERVER csdl_phan_tan_node1
 FOREIGN DATA WRAPPER postgres_fdw
 OPTIONS (host '172.31.0.4', port '5432', dbname 'csdl_phan_tan');
@@ -26,6 +27,11 @@ SELECT umid, srvname, usename, umoptions
 FROM pg_user_mappings
 WHERE srvname = 'csdl_phan_tan_node1' AND usename = CURRENT_USER;
 
+```
+### Create table foreign
+```sql
+
+-- node 1
 
 CREATE FOREIGN TABLE users_pg_node1 (
   user_id SERIAL,
@@ -141,4 +147,5 @@ CREATE FOREIGN TABLE revenues_pg_node1 (
 )
 SERVER csdl_phan_tan_node1
 OPTIONS (schema_name 'public', table_name 'revenues');
+
 ```
