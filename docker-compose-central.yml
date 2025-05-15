@@ -1,0 +1,22 @@
+networks:
+  pg_network:
+    external: true
+
+services:
+  pg-node1:
+    image: postgres:14
+    container_name: pg-node1
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: centralpassword
+      POSTGRES_DB: centraldb
+    networks:
+      - pg_network
+    volumes:
+      - pg_central_data:/var/lib/postgresql/data
+
+volumes:
+  pg_central_data:
